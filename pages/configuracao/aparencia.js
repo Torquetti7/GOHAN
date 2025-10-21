@@ -1,25 +1,11 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, StatusBar } from "react-native"
 import { Ionicons, MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons"
 
-export default function configuracoes({ navigation }) {
+export default function Aparencia({ navigation }) {
   const menuItems = [
     { id: 1, icon: "moon-outline", iconSet: "Ionicons", label: "Aparência", route: "aparencia" },
     { id: 2, icon: "notifications-outline", iconSet: "Ionicons", label: "Notificações", route: "notification" },
     { id: 3, icon: "language", iconSet: "Ionicons", label: "Idioma", route: "Idioma" },
-    {
-      id: 4,
-      icon: "alert-circle-outline",
-      iconSet: "Ionicons",
-      label: "Contatos Bloqueados",
-      route: "ContatosBloqueados",
-    },
-    { id: 5, icon: "apps", iconSet: "MaterialIcons", label: "Permições do aplicativo", route: "Permicoes" },
-    { id: 6, icon: "grid", iconSet: "Ionicons", label: "Acessibilidade", route: "acessibilidade" },
-    { id: 7, icon: "logo-usd", iconSet: "Ionicons", label: "Assinatura", route: "premium" },
-    { id: 8, icon: "people-outline", iconSet: "Ionicons", label: "Mudar de conta", route: "MudarConta" },
-    { id: 9, icon: "chatbox-outline", iconSet: "Ionicons", label: "Enviar feedback", route: "Feedback" },
-    { id: 10, icon: "information-circle-outline", iconSet: "Ionicons", label: "Sobre", route: "Sobre" },
-    { id: 11, icon: "refresh-outline", iconSet: "Ionicons", label: "Restaurar padrão", route: "RestaurarPadrao" },
   ]
 
   const handleMenuPress = (route) => {
@@ -52,7 +38,6 @@ export default function configuracoes({ navigation }) {
 
       {/* Content */}
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <Text style={styles.sectionTitle}>Geral</Text>
 
         <View style={styles.menuContainer}>
           {menuItems.map((item) => (
@@ -69,8 +54,21 @@ export default function configuracoes({ navigation }) {
             </TouchableOpacity>
           ))}
         </View>
+        
+        {/* Botões de Ação */}
+        <View style={styles.footerButtons}>
+          <TouchableOpacity style={styles.applyButton}>
+            <Text style={styles.footerButtonText}>Aplicar alterações</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.restoreButton}>
+            <Text style={styles.footerButtonText}>Restaurar padrão</Text>
+          </TouchableOpacity>
+        </View>
+
       </ScrollView>
     </SafeAreaView>
+    
   )
 }
 
@@ -133,4 +131,37 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     fontWeight: "400",
   },
+  footerButtons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 20,
+    marginHorizontal: 16,
+    marginBottom: 30,
+  },
+  applyButton: {
+    flex: 1,
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#000",
+    borderRadius: 8,
+    paddingVertical: 10,
+    marginRight: 8,
+    alignItems: "center",
+  },
+  restoreButton: {
+    flex: 1,
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#000",
+    borderRadius: 8,
+    paddingVertical: 10,
+    marginLeft: 8,
+    alignItems: "center",
+  },
+  footerButtonText: {
+    color: "#000",
+    fontSize: 14,
+    fontWeight: "500",
+  },
+
 })
